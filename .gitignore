@@ -1,0 +1,12 @@
+/.env
+
+# mysql
+/storage/
+
+# composer
+/vendor/
+
+# PhpStorm / IDEA
+.idea
+# NetBeans
+nbproject

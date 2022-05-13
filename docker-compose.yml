@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: bin/php8
+    restart: always
+    working_dir: /var/www/
+    volumes:
+      - ./public:/var/www
+      - ./src:/var/src
+      - ./vendor:/var/vendor
+      - ./.env:/var/.env
+
+  nginx:
+    build:
+      context: bin/nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/var/www
+      - ./src:/var/src
+      - ./bin/nginx:/etc/nginx/conf.d
+
+  db:
+    build:
+      context: bin/mysql8
+    volumes:
+      - ${MYSQL_INITDB_DIR}:/docker-entrypoint-initdb.d
+      - ./storage/mysql:/var/lib/mysql
+    restart: always
+    ports:
+      - "${HOST_MACHINE_MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+  phpmyadmin:
+    build:
+      context: bin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      UPLOAD_LIMIT: ${UPLOAD_LIMIT}
+      MEMORY_LIMIT: ${MEMORY_LIMIT}
+    ports:
+      - '${HOST_MACHINE_PMA_PORT}:80'
