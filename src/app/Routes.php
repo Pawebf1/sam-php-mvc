@@ -11,7 +11,8 @@ class Routes
             $router = new Router();
 
             $router
-                ->get('/', [Controllers\HomeController::class, 'index']);
+                ->get('/', [Controllers\HomeController::class, 'index'])
+                ->post('/', [Controllers\HomeController::class, 'send']);
 
             echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
 

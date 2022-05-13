@@ -13,14 +13,14 @@ class HomeController
     {
         $packageNumber = $_GET['number_of_packages'] ?? 1;
 
-        $dictionary = ['packageNumber' => $packageNumber];
+        $dictionary = ['packageNumber' => $packageNumber,
+            'today' => date('Y-m-d')];
         return View::make('home/index', $dictionary);
     }
 
     public function send(): View
     {
-        $db = new Database;
-        return View::make('home', ['foo' => 'bar']);
+        return View::make('home/send',);
     }
 
 }
