@@ -6,7 +6,7 @@ do {
                 <div class="input-group-prepend">
                     <label class="input-group-text">Nazwa ładunku</label>
                  </div>
-                <input type="text" class="form-control" id="nazwa_ladunku" name="nazwa_ladunku' . $i . '" required
+                <input type="text" class="form-control" id="cargoName" name="cargoName' . $i . '" required
                     placeholder="Wpisz nazwę">
                </div>');
 
@@ -14,7 +14,7 @@ do {
                     <div class="input-group-prepend">
                         <label class="input-group-text">Ciężar ładunku w kg</label>
                     </div>
-                    <input type="number" step="0.01" class="form-control" id="ciezar_ladunku" name="ciezar_ladunku' . $i . '" max="38000"
+                    <input type="number" step="0.01" class="form-control" id="cargoWeight" name="cargoWeight' . $i . '" max="38000"
                         required placeholder="Wpisz ciężar">
               </div>');
 
@@ -22,11 +22,11 @@ do {
                     <div class="input-group-prepend">
                         <label class="input-group-text">Typ ładunku</label>
                      </div>
-                    <select class="custom-select" id="inputGroupSelectTypLadunku" name = "typ_ladunku' . $i . '">
+                    <select class="custom-select" id="inputGroupSelectCargoType" name = "cargoType' . $i . '">
                         <option value="ladunek zwykly">Ładunek zwykły</option>
                         <option value="ladunek niebezpieczny">Ładunek niebezbieczny</option>
                     </select>
               </div>');
 
     $i++;
-} while ($i < $packageNumber);
+} while ($i < $cargoNumber);
