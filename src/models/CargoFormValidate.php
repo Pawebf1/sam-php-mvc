@@ -31,7 +31,6 @@ class CargoFormValidate
             $this->popupAlert("Data transportu może odbywać się tylko w dni robocze");
             return false;
         }
-
         $x = 0;
         do {
             if ($this->POST["cargoWeight$x"] > $this->POST['inputGroupSelectAirplane']) {
@@ -39,7 +38,7 @@ class CargoFormValidate
                 return false;
             }
             $x++;
-        } while ($x <= $this->cargoNumber);
+        } while ($x < $this->cargoNumber);
 
         return true;
     }

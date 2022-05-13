@@ -14,7 +14,12 @@ class HomeController
 
     public function createDictionary(): array
     {
-        return ['cargoNumber' => $_GET['cargo_number'] ?? 1,
+        if (isset($_GET['cargo_number']))
+            $cargoNumber = (int)$_GET['cargo_number'];
+        else
+            $cargoNumber = 1;
+
+        return ['cargoNumber' => $cargoNumber,
             'today' => date('Y-m-d')];
     }
 
@@ -25,14 +30,21 @@ class HomeController
 
     public function send(): View
     {
-        $packageFormValidate = new CargoFormValidate($_POST, $_GET['cargo_number'] ?? 1);
+        if (isset($_GET['cargo_number']))
+            $cargoNumber = (int)$_GET['cargo_number'];
+        else
+            $cargoNumber = 1;
+
+        $packageFormValidate = new CargoFormValidate($_POST, $cargoNumber);
+
         if (!$packageFormValidate->checkValidation())
             return View::make('home/index', $this->createDictionary());
 
 
-        $mail = new Mailer($_GET['cargo_number'] ?? 1, $_POST, $_FILES);
-        $mail->send();
+        $mail = new Mailer($cargoNumber, $_POST, $_FILES);
+        //$mail->send();
 
+        $db = new Database();
         return View::make('home/send', $this->createDictionary());
     }
 

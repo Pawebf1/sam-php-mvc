@@ -1,7 +1,7 @@
 <?php require_once __DIR__ . '/../include/header.php'; ?>
 
 
-<form action="/" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data">
 
     <?php require_once __DIR__ . '/../../forms/transportForm.php'; ?>
 

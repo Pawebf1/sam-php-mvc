@@ -53,7 +53,7 @@ class Mailer
             $body .= " <tr> <th> Ciezar ladunku </th> <th>" . $this->POST["cargoWeight$x"] . "</th></tr>";
             $body .= " <tr> <th> Typ ladunku </th> <th>" . $this->POST["cargoType$x"] . "</th></tr>";
             $x++;
-        } while ($x <= $this->cargoNumber);
+        } while ($x < $this->cargoNumber);
         $body .= "</table>";
 
         return $body;
@@ -72,7 +72,7 @@ class Mailer
             $body .= ". Ciezar ladunku " . $this->POST["cargoWeight$x"];
             $body .= ". Typ ladunku " . $this->POST["cargoType$x"];
             $x++;
-        } while ($x <= $this->cargoNumber);
+        } while ($x < $this->cargoNumber);
 
         return $body;
     }
@@ -84,7 +84,7 @@ class Mailer
     }
 
 
-    public function prepereMail(): void
+    public function prepareMail(): void
     {
         $this->mail->Body = $this->htmlBody();
         $this->mail->AltBody = $this->rawTextBody();
@@ -94,7 +94,7 @@ class Mailer
     public function send(): void
     {
         try {
-            $this->prepereMail();
+            $this->prepareMail();
             $this->mail->send();
         } catch (Exception $e) {
             echo $e->getMessage();
