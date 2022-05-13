@@ -11,13 +11,16 @@ class HomeController
 {
     public function index(): View
     {
-        return View::make('index/index', ['foo' => 'bar']);
+        $packageNumber = $_GET['number_of_packages'] ?? 1;
+
+        $dictionary = ['packageNumber' => $packageNumber];
+        return View::make('home/index', $dictionary);
     }
 
-    public function cos(): View
+    public function send(): View
     {
         $db = new Database;
-        return View::make('index', ['foo' => 'bar']);
+        return View::make('home', ['foo' => 'bar']);
     }
 
 }
