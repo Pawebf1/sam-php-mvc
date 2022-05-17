@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6 mx-auto mt-5">
             <div class="success_header">
-                <img src="/img/success.png">
+                <img src="/img/success.png" alt="Success image">
             </div>
             <div class="success">
                 <h1>Zgłoszenie wysłane pomyślnie</h1>
