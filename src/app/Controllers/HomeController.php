@@ -47,7 +47,7 @@ class HomeController
         $db = new Database($cargoNumber, $_POST, $_FILES);
         $db->save();
 
-        return View::make('home/send', $this->createDictionary());
+        return View::make('home/uploadSuccess', $this->createDictionary());
     }
 
 }
