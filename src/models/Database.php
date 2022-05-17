@@ -67,11 +67,12 @@ class Database
     private function storeDocuments(): void
     {
         $folderPath = STORAGE_PATH . '/' . $this->POST['transportDate'] . '/';
-        mkdir($folderPath);
+        if (!file_exists($folderPath))
+            mkdir($folderPath);
 
         $folderPath .= $this->id . '/';
         mkdir($folderPath);
-        
+
         for ($i = 0; $i < count($this->FILES['documents']['tmp_name']); $i++) {
             $filePath = STORAGE_PATH . '/' . $this->POST['transportDate'] . '/' . $this->id . '/' . $this->FILES['documents']['name'][$i];
             move_uploaded_file($this->FILES['documents']['tmp_name'][$i], $filePath);
