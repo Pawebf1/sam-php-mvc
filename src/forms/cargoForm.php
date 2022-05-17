@@ -22,7 +22,7 @@ do {
                     <div class="input-group-prepend">
                         <label class="input-group-text">Typ ładunku</label>
                      </div>
-                    <select class="custom-select" id="inputGroupSelectCargoType" name = "cargoType' . $i . '">
+                    <select class="form-select" id="inputGroupSelectCargoType" name = "cargoType' . $i . '">
                         <option value="ladunek zwykly">Ładunek zwykły</option>
                         <option value="ladunek niebezpieczny">Ładunek niebezbieczny</option>
                     </select>

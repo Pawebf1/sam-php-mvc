@@ -19,7 +19,7 @@
     <div class="input-group-prepend">
         <label class="input-group-text">Typ samolotu</label>
     </div>
-    <select class="custom-select" id="inputGroupSelectAirplane" name="inputGroupSelectAirplane">
+    <select class="form-select" id="inputGroupSelectAirplane" name="inputGroupSelectAirplane">
         <option selected value="35000">Airbus A380 (Maksymalna waga pojedynczego ładudunku 35 ton)</option>
         <option value="38000">Boeing 747 (Maksymalna waga pojedynczego ładudunku 38 ton)</option>
     </select>
