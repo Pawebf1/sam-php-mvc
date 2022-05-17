@@ -1,7 +1,10 @@
 /.env
 
 # mysql
-/storage/
+/storage/mysql
+
+# documents
+/storage/documents/
 
 # composer
 /vendor/

@@ -11,6 +11,7 @@ services:
       - ./src:/var/src
       - ./vendor:/var/vendor
       - ./.env:/var/.env
+      - ./storage/documents:/var/storage/documents
 
   nginx:
     build:

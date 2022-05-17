@@ -42,9 +42,11 @@ class HomeController
 
 
         $mail = new Mailer($cargoNumber, $_POST, $_FILES);
-        //$mail->send();
+        $mail->send();
 
-        $db = new Database();
+        $db = new Database($cargoNumber, $_POST, $_FILES);
+        $db->save();
+
         return View::make('home/send', $this->createDictionary());
     }
 
